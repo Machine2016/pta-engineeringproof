@@ -29,21 +29,19 @@
   /* NAV */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     background: var(--navy);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 48px;
-    height: 90px;
+    height: 80px;
     border-bottom: 3px solid var(--amber);
   }
 
   .nav-logo img {
-    height: 64px;
+    height: 56px;
     width: auto;
     display: block;
   }
@@ -56,7 +54,7 @@
 
   .nav-links a {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -92,19 +90,17 @@
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* MOBILE MENU DRAWER */
+  /* MOBILE MENU */
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 90px;
-    left: 0;
-    right: 0;
+    top: 80px;
+    left: 0; right: 0;
     background: var(--navy-mid);
     z-index: 99;
     border-bottom: 3px solid var(--amber);
     padding: 24px 32px;
     flex-direction: column;
-    gap: 0;
   }
 
   .mobile-menu.open { display: flex; }
@@ -128,12 +124,11 @@
   /* HERO */
   .hero {
     position: relative;
-    height: 100vh;
-    min-height: 600px;
+    height: 92vh;
+    min-height: 560px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 0 80px 64px;
+    align-items: center;
+    padding: 80px 64px 0 64px;
     overflow: hidden;
   }
 
@@ -146,13 +141,23 @@
     filter: brightness(0.45);
   }
 
-  .hero-content { position: relative; z-index: 2; }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 48px;
+  }
+
+  .hero-left { flex: 1; }
 
   .hero h1 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(64px, 10vw, 120px);
+    font-size: clamp(72px, 9vw, 134px);
     font-weight: 700;
-    line-height: 0.9;
+    line-height: 0.88;
     text-transform: uppercase;
     letter-spacing: -1px;
     color: var(--white);
@@ -160,31 +165,6 @@
   }
 
   .hero h1 span { display: block; }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 48px;
-    margin-bottom: 40px;
-  }
-
-  .stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-top: 4px;
-  }
 
   .hero-btn {
     display: inline-block;
@@ -198,12 +178,44 @@
     padding: 14px 32px;
     text-decoration: none;
     border-radius: 2px;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s;
   }
 
   .hero-btn:hover { background: var(--white); }
 
-  /* AMBER DIVIDER BAR */
+  /* HERO STATS — right side 2x2 grid */
+  .hero-right {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .hero-stat {
+    background: rgba(17, 31, 46, 0.8);
+    padding: 36px 40px;
+    min-width: 155px;
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 6px;
+  }
+
+  /* AMBER DIVIDER */
   .amber-bar {
     background: var(--amber);
     height: 6px;
@@ -260,14 +272,10 @@
     min-height: 300px;
   }
 
-  /* DISCIPLINES */
-  .section {
-    padding: 80px 64px;
-  }
+  /* SECTIONS */
+  .section { padding: 80px 64px; }
 
-  .section-header {
-    margin-bottom: 48px;
-  }
+  .section-header { margin-bottom: 48px; }
 
   .section-header h2 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -278,6 +286,7 @@
     line-height: 1;
   }
 
+  /* DISCIPLINES */
   .grid-disciplines {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -464,125 +473,86 @@
     text-transform: uppercase;
   }
 
-  /* =====================
-     TABLET — 1024px
-  ===================== */
+  /* TABLET — 1024px */
   @media (max-width: 1024px) {
     nav { padding: 0 32px; }
-
-    .hero { padding: 0 0 60px 40px; }
-
-    .hero-stats { gap: 32px; }
-
+    .hero { padding: 80px 40px 0 40px; }
+    .hero-stat { padding: 28px 28px; min-width: 130px; }
+    .stat-num { font-size: 48px; }
     .section { padding: 60px 40px; }
-
     .split-left { padding: 60px 40px; }
-
     .grid-disciplines { grid-template-columns: repeat(3, 1fr); }
-
     .grid-sectors { grid-template-columns: repeat(2, 1fr); }
-
     .footer-cta { padding: 60px 40px; }
-
     footer { padding: 40px; }
   }
 
-  /* =====================
-     MOBILE — 768px
-  ===================== */
+  /* MOBILE — 768px */
   @media (max-width: 768px) {
-    /* NAV */
-    nav {
-      padding: 0 24px;
-      height: 72px;
-    }
-
+    nav { padding: 0 24px; height: 72px; }
     .nav-logo img { height: 44px; }
-
     .nav-links { display: none; }
-
     .nav-hamburger { display: flex; }
+    .mobile-menu { top: 72px; }
 
-    /* HERO */
     .hero {
-      padding: 0 24px 60px 24px;
+      padding: 72px 24px 0 24px;
+      height: auto;
       min-height: 100svh;
+      align-items: flex-end;
+      padding-bottom: 48px;
     }
 
-    .hero h1 { margin-bottom: 32px; }
+    .hero-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
 
-    .hero-stats {
-      grid-template-columns: repeat(2, auto);
-      gap: 24px 40px;
-      margin-bottom: 32px;
+    .hero h1 { margin-bottom: 24px; }
+
+    .hero-right {
+      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .hero-stat {
+      padding: 20px 16px;
+      min-width: unset;
     }
 
     .stat-num { font-size: 36px; }
 
-    /* SPLIT INTRO — stack vertically, photo on top */
     .split-intro {
       grid-template-columns: 1fr;
-      grid-template-rows: 280px auto;
+      grid-template-rows: 260px auto;
     }
 
     .split-right { grid-row: 1; }
+    .split-left { grid-row: 2; padding: 48px 24px; }
 
-    .split-left {
-      grid-row: 2;
-      padding: 48px 24px;
-    }
-
-    /* SECTIONS */
     .section { padding: 48px 24px; }
-
     .section-header { margin-bottom: 32px; }
 
-    /* DISCIPLINES — 2 col on mobile */
     .grid-disciplines { grid-template-columns: repeat(2, 1fr); }
-
     .discipline-card { padding: 24px 20px; }
 
-    /* SECTORS — 2 col on mobile */
     .grid-sectors { grid-template-columns: repeat(2, 1fr); }
-
     .sector-card { padding: 20px 16px; }
 
-    /* PHOTO ROW — stack to single column */
-    .photo-row {
-      grid-template-columns: 1fr;
-      height: auto;
-    }
-
+    .photo-row { grid-template-columns: 1fr; height: auto; }
     .photo-placeholder { height: 200px; }
 
-    /* FOOTER CTA — stack */
-    .footer-cta {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 48px 24px;
-      gap: 24px;
-    }
+    .footer-cta { flex-direction: column; align-items: flex-start; padding: 48px 24px; gap: 24px; }
 
-    /* FOOTER — stack */
-    footer {
-      grid-template-columns: 1fr;
-      padding: 40px 24px;
-      gap: 32px;
-    }
-
+    footer { grid-template-columns: 1fr; padding: 40px 24px; gap: 32px; }
     .footer-right { text-align: left; }
   }
 
-  /* =====================
-     SMALL MOBILE — 420px
-  ===================== */
+  /* SMALL MOBILE — 420px */
   @media (max-width: 420px) {
+    .hero-right { grid-template-columns: repeat(2, 1fr); }
     .grid-disciplines { grid-template-columns: 1fr; }
-
-    .hero-stats {
-      grid-template-columns: repeat(2, auto);
-      gap: 20px 32px;
-    }
   }
 </style>
 </head>
@@ -599,9 +569,7 @@
     <li><a href="/contact">Contact</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
@@ -616,29 +584,28 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>
-      <span>Trusted</span>
-      <span>Advisors</span>
-    </h1>
-    <div class="hero-stats">
-      <div>
+    <div class="hero-left">
+      <h1><span>Trusted</span><span>Advisors</span></h1>
+      <a href="#work" class="hero-btn">View Our Work</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
         <div class="stat-num">73</div>
         <div class="stat-label">Years</div>
       </div>
-      <div>
+      <div class="hero-stat">
         <div class="stat-num">30+</div>
         <div class="stat-label">Engineers</div>
       </div>
-      <div>
+      <div class="hero-stat">
         <div class="stat-num">10</div>
         <div class="stat-label">Disciplines</div>
       </div>
-      <div>
+      <div class="hero-stat">
         <div class="stat-num">12</div>
         <div class="stat-label">Sectors</div>
       </div>
     </div>
-    <a href="#work" class="hero-btn">View Our Work</a>
   </div>
 </section>
 
@@ -668,47 +635,38 @@
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M8 20h24M20 8v24M14 14l12 12M26 14L14 26"/><circle cx="20" cy="20" r="4"/></svg></div>
       <h3>HVAC Systems</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M22 6l-6 14h8l-6 14"/></svg></div>
       <h3>Electrical Power Distribution</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M12 8v10a8 8 0 0 0 16 0V8M10 8h6M24 8h6"/></svg></div>
       <h3>Plumbing Systems</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M20 34c-6 0-10-4-10-9 0-4 3-7 5-10 1 3 2 5 5 6 0-4 2-8 5-11 2 4 5 8 5 15 0 5-4 9-10 9z"/></svg></div>
       <h3>Fire Systems</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M20 8v2M20 30v2M8 20H6M34 20h-2M12 12l-1.4-1.4M29.4 29.4L28 28M12 28l-1.4 1.4M29.4 10.6L28 12"/><circle cx="20" cy="20" r="7"/><path d="M17 30h6"/></svg></div>
       <h3>Lighting Systems</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><rect x="8" y="14" width="24" height="16" rx="2"/><path d="M14 14v-2a6 6 0 0 1 12 0v2"/><circle cx="20" cy="22" r="2"/></svg></div>
       <h3>Communications &amp; Security</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M10 30L20 10l10 20M14 24h12"/></svg></div>
       <h3>Engineering Surveys &amp; Studies</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M20 8a10 10 0 0 1 10 10v8H10v-8A10 10 0 0 1 20 8z"/><path d="M17 26v1a3 3 0 0 0 6 0v-1"/><path d="M20 8V6"/></svg></div>
       <h3>Alarm Systems</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M14 20l5 5 9-9"/><circle cx="20" cy="20" r="12"/></svg></div>
       <h3>Commissioning</h3>
     </div>
-
     <div class="discipline-card">
       <div class="disc-icon"><svg viewBox="0 0 40 40"><path d="M20 8l-4 10h6l-8 14 10-12h-6z"/></svg></div>
       <h3>Arc Flash &amp; Coordination Studies</h3>
@@ -724,7 +682,6 @@
     <h2>Project Sectors</h2>
   </div>
   <div class="grid-sectors">
-
     <div class="sector-card">
       <svg viewBox="0 0 28 28"><path d="M4 24V10l10-6 10 6v14"/><rect x="10" y="16" width="8" height="8"/></svg>
       <span>Healthcare</span>
@@ -757,7 +714,6 @@
       <svg viewBox="0 0 28 28"><path d="M4 20c5-8 15-8 20 0"/><circle cx="14" cy="10" r="4"/></svg>
       <span>Parks &amp; Recreation</span>
     </div>
-
   </div>
 </section>
 
